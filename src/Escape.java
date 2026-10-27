@@ -13,12 +13,6 @@ import java.util.List;
  * The program must not overflow the stack on a maze of 1000 by 1000 cells.
  */
 public class Escape {
-
-    /**
-     * path: the cells of the way out, from 0 to the last cell.
-     * visited: how many cells are marked as visited at the moment the exit is marked (the start and the exit are counted).
-     * deadEnds: how many cells of the maze have exactly one open neighbour.
-     */
     public record Result(int[] path, int visited, int deadEnds) {}
 
     public static Result escape(Input.Walls w, int[] broken) {
@@ -47,7 +41,6 @@ public class Escape {
         while (!stack.isEmpty()) {
             int curr = stack.peek();
 
-            // Если дошли до выхода
             if (curr == exitCell && !foundExit) {
                 foundExit = true;
                 exitVisitedCount = visitedCount;

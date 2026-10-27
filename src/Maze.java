@@ -10,11 +10,6 @@ import java.util.PriorityQueue;
  * the line number in walls.txt is the index + 1. The cells are connected by DisjointSet.
  */
 public class Maze {
-
-    /**
-     * Mission 1. Take the walls in the order of the file. Break a wall when its two cells are in different sets.
-     * Returns the indexes of the broken walls, in the order of breaking.
-     */
     public static int[] breakWalls(Input.Walls w) {
         int numCells = w.cells();
         DisjointSet d = new DisjointSet(numCells);
@@ -33,13 +28,8 @@ public class Maze {
         }
         return result;
     }
-
-    /**
-     * Mission 2. Kruskal: the same, but take the walls from the cheapest to the most expensive.
-     * Returns the indexes of the broken walls.
-     */
+    //kruskal
     public static int[] cheapestMaze(Input.Walls w) {
-        // TODO
         int numCells = w.cells();
         DisjointSet d = new DisjointSet(numCells);
         int totalWalls = w.count();
@@ -65,10 +55,7 @@ public class Maze {
         return result;
     }
 
-    /**
-     * Mission 2. Prim with a priority queue. Returns the total cost of the cheapest maze.
-     * It must be equal to the total cost of cheapestMaze.
-     */
+    //Prim
     public static long primCost(Input.Walls w) {
         int numCells = w.cells();
         int totalWalls = w.count();

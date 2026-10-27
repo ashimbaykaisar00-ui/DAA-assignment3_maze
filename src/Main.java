@@ -38,7 +38,7 @@ public class Main {
         for (int z : zoneOf) { zones = Math.max(zones, z + 1); zoneSize[z]++; }
         long largest = 0;
         for (int size : zoneSize) largest = Math.max(largest, size);
-        long isDag = zones == slides.n() ? 1 : 0;   // no cycle: every cell is a zone of its own
+        long isDag = zones == slides.n() ? 1 : 0;   
         long[] routes = Zones.routes(slides, zoneOf, zones);
 
         print("Broken", broken.length);
@@ -55,9 +55,6 @@ public class Main {
         print("Flow stages", routes[0]);
         print("Fastest route cost", routes[1]);
 
-        // Mission 7: the picture and the page output/maze.html (open it in a browser)
-        Render.draw(walls, broken, escape.path(), "output/maze.png");
-        Render.page(walls, slides, broken, escape.path(), zoneOf, "output/maze.html");
     }
 
     static void print(String name, long value) {

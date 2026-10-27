@@ -19,7 +19,6 @@ public class DisjointSet {
         }
     }
 
-    /** The root of the set that contains x. */
     public int find(int x) {
         if (parent[x] == x) {
             return x;
@@ -28,7 +27,6 @@ public class DisjointSet {
         return parent[x] = find(parent[x]);
     }
 
-    /** Joins the sets of a and b. Returns true if they were different sets, false if they were already one set. */
     public boolean union(int a, int b) {
         int rootA = find(a);
         int rootB = find(b);
@@ -53,7 +51,6 @@ public class DisjointSet {
         return find(a) == find(b);
     }
 
-    /** Number of sets now. */
     public int count() {
         return count;
     }

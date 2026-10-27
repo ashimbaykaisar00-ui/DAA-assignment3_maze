@@ -9,17 +9,7 @@ import java.util.*;
  * or s.from()[i].
  */
 public class Zones {
-
-    /**
-     * Mission 4. Kosaraju. Returns zoneOf: zoneOf[cell] = number of the zone, numbers 0 .. zones-1.
-     * Number the zones in the order in which the second pass finds them. That order is a topological order
-     * of the zone graph: every slide between two zones goes from a smaller number to a larger number.
-     *
-     * Plan: 1) DFS on the slides, write the cells in the order in which they are finished (use a stack, not recursion);
-     * 2) go through the cells from the last finished to the first; if a cell has no zone yet, DFS from it on the reversed
-     * slides (slidesInto) and give every cell it reaches the next zone number.
-     * Is DAG in Main is 1 when the number of zones equals the number of cells (no cycle), so you do not need a separate check.
-     */
+    //mission 4: strongly connected components
     public static int[] kosaraju(Input.Slides s) {
         int n = s.n();
         int[][] adj = Graphs.slidesFrom(s);
@@ -95,12 +85,9 @@ public class Zones {
         }
     }
 
-    /**
-     * Mission 5. The graph of zones: the edge X to Y costs the cheapest slide from X to Y, walking inside a zone is free.
-     * Go through the zones in the order of their numbers (no priority queue). Returns two numbers:
-     * [0] flow stages: the number of zones on the longest chain of zones;
-     * [1] the cost of the cheapest route from the zone of cell 0 to the zone of the last cell.
-     */
+    
+
+    //mission 5: longest path and fastest route
     public static long[] routes(Input.Slides s, int[] zoneOf, int zoneCount) {
         List<int[]>[] zoneAdj = new ArrayList[zoneCount];
         for (int i = 0; i < zoneCount; i++) {
